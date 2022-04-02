@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOX MODEL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/efb8b56296.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/app.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="header-section">
+          <div class="header-logo">
+            <img src="assets/img/logo.png" alt="logo" />
+            <span></span>
+          </div>
+        </div>
+        <div class="header-section">
+          <h1 class="header-title">Box Model</h1>
+        </div>
+        <div class="header-section">
+          <div class="header-links">
+            <a href="https://github.com/" class="icon-link"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
+          <div class="header-links">
+            <a
+              href="https://www.linkedin.com/in/rodrigo-g-wilkens/"
+              class="icon-link"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </div>
+          <div class="header-links">
+            <a href="https://www.instagram.com/ro.g.w/?hl=es" class="icon-link"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </header>
+
+      <aside class="component">
+        <div class="margin-div">
+          <p>Margin :</p>
+          <button class="margin" id="margin-btn"></button>
+        </div>
+        <div class="border-div">
+          <p>Border :</p>
+          <button class="border" id="border-btn"></button>
+        </div>
+        <div class="padding-div">
+          <p>Padding :</p>
+          <button class="padding" id="padding-btn"></button>
+        </div>
+        <div class="box-content-div">
+          <p>Box Content :</p>
+          <button class="box-content" id="boxContent-btn"></button>
+        </div>
+      </aside>
+      <main>
+        <div class="component contenedor" id="container">
+          <div class="box" id="box">
+            <div class="contenido" id="content">
+              <span
+                >Usa las barras de color para ver las diferentes propiedades de
+                Box Model</span
+              >
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,391 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/************
+*  CUSTOM PROPERTIES
+******************/
+:root {
+   /* https://colorhunt.co/palette/0e3edaf473b9ffbde6ffddee */
+   --clr-light: 330, 100%, 93%;
+   --clr-normal: 323, 100%, 87%, 1;
+   --clr-strong: 327, 85%, 70%;
+   --clr-dark: 238, 100%, 23%;
+
+   --fs-mob: .8rem;
+
+   --fw-normal: 400;
+   --fw-strong: 500;
+   --fw-stronger: 700;
+
+   --border: .5rem;
+
+   --mid-state-media: 480px;
+
+}
+body {
+   background: url('../img/wallpaper-adventure.jpg');
+   font-family: 'Noto Sans JP', sans-serif;
+   color: hsl(var(--clr-light));
+   letter-spacing: 1.5px;
+   word-spacing: 2px;
+}
+@media (max-width: 430px) {
+   body {
+      background-position: 58% 47%;
+   }
+}
+@media only screen and (max-width: 1080px) and (min-width: 429px) {
+   body {
+      background-position: 52% 10%;
+   }
+}
+@media (min-width: 1079px) {
+   body {
+      background-position: center;
+   }
+}
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Lobster Two', cursive;
+}
+.wrapper {
+   min-height: 100vh;
+   padding: .75rem;
+}
+/***************
+* General Classes
+*****************/
+.component {
+   background: hsla(var(--clr-dark), 0.75);
+}
+@supports (backdrop-filter: blur(4px)) {
+   .component {
+      background: hsla(var(--clr-dark), 0.5);
+      backdrop-filter: blur(4px);
+   }
+}
+@keyframes glowMargin {
+   0% {background-color: hsla(var(--clr-dark), 0.75);}
+   12.5% {background-color: hsla(var(--clr-dark), 1);}
+   25% {background-color: hsla(var(--clr-dark), 075);}
+   37.5% {background-color: hsla(var(--clr-dark), 0.5);}
+   50% {background-color: hsla(var(--clr-dark), 0.25);}
+   62.5% {background-color: hsla(var(--clr-dark), 0);}
+   75% {background-color: hsla(var(--clr-dark), 0.25);}
+   87.5% {background-color: hsla(var(--clr-dark), 0.5);}
+   100% {background-color: hsla(var(--clr-dark), 0.75);}
+}
+.glowMargin {
+   transition: background-color 200ms ease-in-out;
+   animation: glowMargin 2s linear infinite;
+}
+@keyframes glowBorder {
+   0% {border-color: hsla(var(--clr-strong), 1);}
+   50% {border-color: hsla(var(--clr-strong), 0);}
+   100% {border-color: hsla(var(--clr-strong), 1);}
+}
+.glowBorder {
+   transition: border-color 200ms ease-in-out;
+   animation: glowBorder 2s linear infinite;
+}
+@keyframes glowPadding {
+   0% {background-color: hsla(var(--clr-light), 1);}
+   50% {background-color: hsla(var(--clr-light), 0);}
+   100% {background-color: hsla(var(--clr-light), 1);}
+}
+.glowPadding {
+   transition: background-color 200ms ease-in-out;
+   animation: glowPadding 2s linear infinite;
+}
+@keyframes glowContent {
+   0% {background-color: hsla(var(--clr-normal), 1);}
+   50% {background-color: hsla(var(--clr-strong), .5);}
+   100% {background-color: hsla(var(--clr-normal), 1);}
+}
+.glowContent {
+   transition: background-color 200ms ease-in-out;
+   animation: glowContent 2s linear infinite;
+}
+@keyframes growLetterSize {
+   0% {font-size: 0rem;}
+   100% {font-size: 0.75rem;}
+}
+.growLetterSize {
+   animation: growLetterSize .2s linear forwards;
+}
+@keyframes shrinkLetterSize {
+   0% {font-size: 0.75rem;}
+   100% {font-size: 0rem;}
+}
+.shrinkLetterSize {
+   font-size: 0.75rem;
+   animation: shrinkLetterSize .2s ease-in-out 0.4s forwards;
+}
+
+/*************
+* HEADER
+***************/
+header {
+   color: hsl(var(--clr-dark));
+   display: flex;
+   flex-flow: row nowrap;
+   align-items: center;
+}
+.header-logo {
+   width: clamp(45px, 7vw ,60px);
+   position: relative;
+}
+.header-logo img {
+   filter: drop-shadow(0px 0px 3px #1a174e);
+}
+/* ANIMATION UNDERLINE HEADER */
+@keyframes underline {
+   from {width: 0vw;}
+   to {width:75vw;}
+}
+.header-logo span {
+   position: absolute;
+}
+.header-logo span::after {
+   content: "";
+   display: inline-block;
+   position: relative;
+   width: 0vw;
+   height: 1px;
+   bottom: 10px;
+   transition: animation 350ms ease-in-out;
+   background-color: hsl(var(--clr-strong));
+}
+header:hover .header-logo span::after {
+   animation: underline 1.0s forwards;
+   -webkit-animation: underline 1.0s forwards;
+}
+.header-title {
+   font-size: 2.4rem;
+}
+.header-section:nth-child(2) {
+   margin-left: 1.2rem;
+}
+.header-section:last-child {
+   display: flex;
+   flex-flow: column nowrap;
+   margin-left: auto;
+   height: 0px;
+   align-self: baseline;
+}
+.header-section:last-child::before {
+   content: "";
+   width: 0px;
+   height: 2px;
+   background: black;
+   position: absolute;
+}
+@media (min-width: 430px) {
+   .header-section:last-child {
+      flex-flow: row nowrap;
+   }
+}
+
+.header-links {
+   font-size: 1.5rem;
+   margin-inline: 1.5rem .75rem;
+   margin-top: .75rem;
+   width: 22px;
+   height: 22px;
+}
+.icon-link {
+   color: hsl(var(--clr-dark));
+   text-decoration: none;
+   position: relative;
+   display: inline-grid;
+   place-content: center;
+   aspect-ratio: 1;
+   z-index: 1;
+}
+.icon-link::after {
+   content: "";
+   position:absolute;
+   border-radius: 50%;
+   width: 100%;
+   height: 100%;
+   background-color: hsl(var(--clr-strong));
+   z-index: -1;
+   transform: scale(0);
+   opacity: 0;
+   transition: transform 250ms ease-in-out, opacity 400ms linear;
+}
+.icon-link:hover::after, .icon-link:focus::after {
+   opacity: 1;
+   transform: scale(1.5);
+}
+/******************
+* ASIDE - Bloque con las barritas.
+*****************/
+aside {
+   margin-right: 3rem;
+   width: clamp(220px, 50vw, 240px);
+   min-width: fit-content;
+   padding: 1.5rem;
+   border-radius: 4px;
+   margin-block: 2rem;
+   font-weight: var(--fw-strong);
+}
+@media (min-width: 430px) {
+   aside {
+      margin-inline: auto;
+   }
+}
+aside div {
+   margin-bottom: 1rem;
+}
+aside div:last-child {
+   margin-bottom: 0px;
+}
+.margin-div, .padding-div, .border-div, .box-content-div {
+   display: flex;
+   flex-flow: row;
+   justify-content: space-between;
+}
+.margin-div button, .border-div button, .padding-div button, .box-content-div button {
+   content: "";
+   display:inline-block;
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   margin-left: 2rem;
+   transition: font-size 250ms ease-in-out;
+}
+.margin {
+   background: hsl(var(--clr-dark));
+   cursor: pointer;
+   color: hsl(var(--clr-light));
+}
+.border, .pading, .box-content {color: hsl(var(--clr-dark));}
+.border {
+   background: hsl(var(--clr-strong));
+   cursor: pointer;
+}
+.padding {
+   background: hsl(var(--clr-light));
+   cursor: pointer;
+}
+.box-content {
+   background: hsl(var(--clr-normal));
+   cursor: pointer;
+}
+
+/**********************
+* MAIN - Box Model Demo
+************************/
+.contenedor {
+   border: 0.1rem solid hsla(var(--clr-strong), 0.1);
+   border-radius: var(--border);
+   max-width: 90vw;
+   margin-block: 2rem;
+   margin-right: auto;
+   background-color: hsla(var(--clr-dark), 0.75);
+}
+.box {
+   margin: 1rem;
+   padding: 1.25rem;
+   border: 4px solid hsl(var(--clr-strong));
+   border-radius: var(--border);
+   background-color: hsl(var(--clr-light));
+   color: hsla(var(--clr-dark));
+}
+.contenido {
+   background-color: hsl(var(--clr-normal));
+   border-radius: var(--border);
+   padding: 1rem;
+   font-size: var(--fs-mob);
+}
+@media (min-width: 430px) {   
+   .contenedor {
+      margin: 4rem auto 2rem auto;
+      max-width: 560px;
+   }
+   .box {
+      margin: 2.5rem;
+      padding: 1.75rem;
+   }
+   .contenido {
+      padding-inline: clamp(1.5rem, 10vw, 5rem);
+      padding-block: clamp(2rem, 6vw, 6rem);
+      max-width: 500px;
+      margin: auto;
+   }
+}
+@media (min-width: 900px) {
+
+}
